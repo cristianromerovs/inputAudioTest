@@ -25,7 +25,7 @@ function setup(){
 function gotSources(deviceList) {
   if (deviceList.length > 0) {
     //set the source to the first item in the deviceList array
-    audioIn.setSource(1);
+    audioIn.setSource(2);
     let currentSource = deviceList[audioIn.currentSource];
     text('set source to: ' + currentSource.deviceId, 5, 20, width);
   }
