@@ -1,39 +1,25 @@
-// let mic;
-
-// function setup() {
-//     createCanvas(200, 200);
-//     mic = new p5.AudioIn();
-//     mic.start();
-// }
-
-// function draw() {
-//     background(0);
-//     let vol = mic.getLevel();
-//     ellipse(100, 100, vol * 200, vol * 200);
-//     console.log(vol);
-// }
-
 let audioIn;
 
-function setup(){
-  text('getting sources...', 0, 20);
+function setup() {
+  createCanvas(windowWidth, windowHeight);
   audioIn = new p5.AudioIn();
   audioIn.getSources(gotSources);
   audioIn.start();
+  backgroundColor = color(0, 0, 0);
 }
 
 function gotSources(deviceList) {
   if (deviceList.length > 0) {
-    //set the source to the first item in the deviceList array
-    audioIn.setSource(5);
-    let currentSource = deviceList[audioIn.currentSource];
-    text('set source to: ' + currentSource.deviceId, 5, 20, width);
+    audioIn.setSource(1);
+    //let currentSource = deviceList[audioIn.currentSource];
+    //text(currentSource.deviceId, 5, 20, width);
   }
 }
 
 function draw() {
-    background(0);
-    let vol = audioIn.getLevel();
-    ellipse(100, 100, vol * 200, vol * 200);
-    console.log(vol);
+  let vol = audioIn.getLevel();
+  backgroundColor.setRed(vol * 400);
+  background(backgroundColor);
+  //ellipse(100, 100, vol * 200, vol * 200);
+  //rect(300, 200, 300, 200);
 }
