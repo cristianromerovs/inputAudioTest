@@ -18,8 +18,8 @@ function gotSources(deviceList) {
 
 function draw() {
   let vol = (audioIn.getLevel() * 1000).toFixed();
-  console.clear();
-  console.log(vol);
+//   console.clear();
+//   console.log(vol);
   backgroundColor.setRed(vol);
   background(backgroundColor);
   //ellipse(100, 100, vol * 200, vol * 200);
