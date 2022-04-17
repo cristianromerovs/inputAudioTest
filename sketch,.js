@@ -19,6 +19,7 @@ function setup(){
   text('getting sources...', 0, 20);
   audioIn = new p5.AudioIn();
   audioIn.getSources(gotSources);
+  audioIn.start();
 }
 
 function gotSources(deviceList) {
@@ -28,4 +29,11 @@ function gotSources(deviceList) {
     let currentSource = deviceList[audioIn.currentSource];
     text('set source to: ' + currentSource.deviceId, 5, 20, width);
   }
+}
+
+function draw() {
+    background(0);
+    let vol = audioIn.getLevel();
+    ellipse(100, 100, vol * 200, vol * 200);
+    console.log(vol);
 }
